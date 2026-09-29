@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwphur64s6w1u"]
+
+[ext_resource type="Script" path="res://scripts/spinning_enemy.gd" id="1_0jxd6"]
+[ext_resource type="PackedScene" uid="uid://5w6iq5yratwq" path="res://scenes/spinning_enemy_bullet.tscn" id="2_dxk2y"]
+[ext_resource type="Texture2D" uid="uid://dppdix8wwjp5r" path="res://images/spinning_enemy.png" id="3_0ft0d"]
+[ext_resource type="PackedScene" uid="uid://wxjdrmhr70md" path="res://scenes/health_component.tscn" id="3_biav0"]
+[ext_resource type="PackedScene" uid="uid://b4ww76hvy848f" path="res://scenes/immunity_component.tscn" id="5_lmbrp"]
+[ext_resource type="PackedScene" uid="uid://bemon7l33lvxj" path="res://scenes/collision_component.tscn" id="6_06n2k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rncbc"]
+size = Vector2(15.9999, 16.0001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwpgt"]
+size = Vector2(13.9999, 14.0001)
+
+[node name="spinning_enemy" type="CharacterBody2D" groups=["enemy"]]
+texture_filter = 1
+collision_mask = 18
+script = ExtResource("1_0jxd6")
+bullet = ExtResource("2_dxk2y")
+
+[node name="health_component" parent="." node_paths=PackedStringArray("immunity_component") instance=ExtResource("3_biav0")]
+immunity_component = NodePath("../immunity_component")
+
+[node name="sprite" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("3_0ft0d")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_rncbc")
+
+[node name="immunity_component" parent="." instance=ExtResource("5_lmbrp")]
+
+[node name="collision_component" parent="." node_paths=PackedStringArray("health_component") groups=["enemy"] instance=ExtResource("6_06n2k")]
+collision_layer = 4
+collision_mask = 2
+health_component = NodePath("../health_component")
+
+[node name="comp_collider" type="CollisionShape2D" parent="collision_component"]
+position = Vector2(-2.38419e-07, 5.96046e-08)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_jwpgt")
+
+[node name="reload_speed" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="health_base" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = 12.0
+offset_right = 10.0
+offset_bottom = 14.0
+color = Color(1, 0, 0, 1)
+
+[node name="health_bar" type="ColorRect" parent="health_base"]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 2.0
+color = Color(0, 1, 0, 1)
+
+[connection signal="timeout" from="reload_speed" to="." method="_on_reload_speed_timeout"]

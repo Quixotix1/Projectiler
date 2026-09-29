@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://jfo7d3drbg4k"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_2mrod"]
+[ext_resource type="Texture2D" uid="uid://7tyo5liot207" path="res://images/player.png" id="1_y1s3n"]
+[ext_resource type="PackedScene" uid="uid://wxjdrmhr70md" path="res://scenes/health_component.tscn" id="3_hr4bn"]
+[ext_resource type="PackedScene" uid="uid://cc7r6yvcviowr" path="res://scenes/gun.tscn" id="4_qltn3"]
+[ext_resource type="PackedScene" uid="uid://b4ww76hvy848f" path="res://scenes/immunity_component.tscn" id="5_67nm0"]
+[ext_resource type="PackedScene" uid="uid://bemon7l33lvxj" path="res://scenes/collision_component.tscn" id="6_gmjro"]
+[ext_resource type="Theme" uid="uid://bag22v7udcr4d" path="res://themes/base_theme.tres" id="7_ojpyp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e3spc"]
+radius = 6.0
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+texture_filter = 1
+collision_layer = 4
+collision_mask = 17
+script = ExtResource("1_2mrod")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_y1s3n")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e3spc")
+
+[node name="health_component" parent="." node_paths=PackedStringArray("immunity_component") instance=ExtResource("3_hr4bn")]
+immunity_component = NodePath("../immunity_component")
+
+[node name="camera" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="gun" parent="." instance=ExtResource("4_qltn3")]
+z_index = 5
+
+[node name="immunity_component" parent="." instance=ExtResource("5_67nm0")]
+
+[node name="collision_component" parent="." node_paths=PackedStringArray("health_component") groups=["player"] instance=ExtResource("6_gmjro")]
+collision_layer = 5
+collision_mask = 5
+health_component = NodePath("../health_component")
+
+[node name="comp_collider" type="CollisionShape2D" parent="collision_component"]
+shape = SubResource("CircleShape2D_e3spc")
+
+[node name="round_over_label" type="RichTextLabel" parent="."]
+visible = false
+z_index = 10
+texture_filter = 1
+offset_left = -133.0
+offset_top = -21.0
+offset_right = 133.0
+offset_bottom = 23.0
+theme = ExtResource("7_ojpyp")
+theme_override_font_sizes/normal_font_size = 43
+text = "ROUND OVER"
+metadata/_edit_use_anchors_ = true
+
+[node name="game_over_label" type="RichTextLabel" parent="."]
+visible = false
+z_index = 10
+texture_filter = 1
+offset_left = -117.0
+offset_top = -42.0
+offset_right = 118.0
+offset_bottom = 2.0
+theme = ExtResource("7_ojpyp")
+theme_override_font_sizes/normal_font_size = 43
+text = "GAME OVER"
+metadata/_edit_use_anchors_ = true
+
+[node name="health_base" type="ColorRect" parent="."]
+offset_left = -14.0
+offset_top = 10.0
+offset_right = 14.0
+offset_bottom = 12.0
+color = Color(1, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="health_bar" type="ColorRect" parent="health_base"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 1, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="round_indicator" type="RichTextLabel" parent="."]
+z_index = 10
+offset_left = -153.0
+offset_top = -84.0
+offset_bottom = -59.0
+theme = ExtResource("7_ojpyp")
+theme_override_font_sizes/normal_font_size = 24
+text = "Round 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="game_over_fade" type="ColorRect" parent="."]
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = 90.0
+color = Color(0.627451, 0, 0, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="restart_button" type="Button" parent="."]
+visible = false
+offset_left = -62.0
+offset_top = 23.0
+offset_right = 62.0
+offset_bottom = 46.0
+theme = ExtResource("7_ojpyp")
+theme_override_font_sizes/font_size = 16
+text = "Back To Menu"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="restart_button" to="." method="_on_restart_button_pressed"]

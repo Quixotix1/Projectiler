@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://4kg24jkpnmhk"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_53lfw"]
+[ext_resource type="PackedScene" uid="uid://wxjdrmhr70md" path="res://scenes/health_component.tscn" id="1_hetsf"]
+[ext_resource type="PackedScene" uid="uid://db1m1paqm0ud8" path="res://scenes/basic_enemy_bullet.tscn" id="2_3s84u"]
+[ext_resource type="Texture2D" uid="uid://d0r7078y6s62w" path="res://images/basic_enemy.png" id="2_60wm8"]
+[ext_resource type="PackedScene" uid="uid://b4ww76hvy848f" path="res://scenes/immunity_component.tscn" id="4_d1aue"]
+[ext_resource type="PackedScene" uid="uid://bemon7l33lvxj" path="res://scenes/collision_component.tscn" id="5_4ccv5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_muvyx"]
+radius = 6.0
+height = 16.0
+
+[node name="enemy" type="CharacterBody2D" groups=["enemy"]]
+texture_filter = 1
+collision_mask = 18
+script = ExtResource("1_53lfw")
+bullet = ExtResource("2_3s84u")
+
+[node name="health_component" parent="." node_paths=PackedStringArray("immunity_component") instance=ExtResource("1_hetsf")]
+immunity_component = NodePath("../immunity_component")
+
+[node name="sprite" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_60wm8")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_muvyx")
+
+[node name="immunity_component" parent="." instance=ExtResource("4_d1aue")]
+
+[node name="collision_component" parent="." node_paths=PackedStringArray("health_component") groups=["enemy"] instance=ExtResource("5_4ccv5")]
+collision_layer = 4
+collision_mask = 2
+health_component = NodePath("../health_component")
+
+[node name="comp_collider" type="CollisionShape2D" parent="collision_component"]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_muvyx")
+
+[node name="reload_speed" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="health_base" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = 12.0
+offset_right = 10.0
+offset_bottom = 14.0
+color = Color(1, 0, 0, 1)
+
+[node name="health_bar" type="ColorRect" parent="health_base"]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 2.0
+color = Color(0, 1, 0, 1)
+
+[connection signal="timeout" from="reload_speed" to="." method="_on_reload_speed_timeout"]

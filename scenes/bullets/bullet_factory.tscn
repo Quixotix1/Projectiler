@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkww7li6vglu"]
+
+[ext_resource type="Script" path="res://scripts/bullets/bullet_factory.gd" id="1_sjd6e"]
+
+[node name="BulletFactory" type="Node2D"]
+script = ExtResource("1_sjd6e")

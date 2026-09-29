@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc7r6yvcviowr"]
+
+[ext_resource type="Script" path="res://scripts/gun.gd" id="1_a4e3e"]
+[ext_resource type="Texture2D" uid="uid://btcl8vkw2kyv3" path="res://images/gun.png" id="1_jfdhs"]
+
+[node name="gun" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_a4e3e")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(12, 0)
+rotation = 1.5708
+texture = ExtResource("1_jfdhs")
+
+[node name="reload_speed" type="Timer" parent="."]
+one_shot = true

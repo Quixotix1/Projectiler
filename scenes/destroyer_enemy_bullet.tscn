@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://d10b21v2mv8gp"]
+
+[ext_resource type="Script" path="res://scripts/basic_enemy_bullet.gd" id="1_plujk"]
+[ext_resource type="Texture2D" uid="uid://cdtvv7uy88q0b" path="res://images/destroyer_enemy_bullet.png" id="2_cfcv7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrufs"]
+radius = 2.23607
+
+[node name="basic_enemy_bullet" type="Node2D" groups=["bullet"]]
+texture_filter = 1
+script = ExtResource("1_plujk")
+
+[node name="sprite" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_cfcv7")
+
+[node name="collision_component" type="Area2D" parent="." groups=["enemy_projectile"]]
+rotation = 1.5708
+collision_layer = 4
+
+[node name="collider" type="CollisionShape2D" parent="collision_component"]
+shape = SubResource("CircleShape2D_xrufs")
+
+[node name="destruction_timer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[connection signal="timeout" from="destruction_timer" to="." method="_on_destruction_timer_timeout"]

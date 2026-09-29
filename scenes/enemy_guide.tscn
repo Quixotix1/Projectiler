@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://c14a4m0uog8cr"]
+
+[ext_resource type="Theme" uid="uid://bag22v7udcr4d" path="res://themes/base_theme.tres" id="1_607ig"]
+[ext_resource type="Script" path="res://scripts/enemy_guide.gd" id="1_k6thu"]
+[ext_resource type="Texture2D" uid="uid://d0r7078y6s62w" path="res://images/basic_enemy.png" id="2_t6qqd"]
+[ext_resource type="Texture2D" uid="uid://dppdix8wwjp5r" path="res://images/spinning_enemy.png" id="3_ld621"]
+[ext_resource type="Texture2D" uid="uid://cnoju0he1udp5" path="res://images/suicidal_enemy.png" id="4_lxsnp"]
+[ext_resource type="Texture2D" uid="uid://doy10couhly0b" path="res://images/destroyer_enemy.png" id="5_ieqjq"]
+
+[node name="enemy_guide" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k6thu")
+
+[node name="return_button" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.0289063
+anchor_top = 0.0361111
+anchor_right = 0.217969
+anchor_bottom = 0.1
+theme = ExtResource("1_607ig")
+text = "Back To Title"
+metadata/_edit_use_anchors_ = true
+
+[node name="basic_enemy" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(144, 200)
+scale = Vector2(4, 4)
+texture = ExtResource("2_t6qqd")
+
+[node name="spinning_enemy" type="Sprite2D" parent="."]
+position = Vector2(144, 320)
+scale = Vector2(4, 4)
+texture = ExtResource("3_ld621")
+
+[node name="suicidal_enemy" type="Sprite2D" parent="."]
+position = Vector2(144, 440)
+scale = Vector2(4, 4)
+texture = ExtResource("4_lxsnp")
+
+[node name="destroyer_enemy" type="Sprite2D" parent="."]
+position = Vector2(144, 580)
+scale = Vector2(8, 8)
+texture = ExtResource("5_ieqjq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+anchor_left = 0.225
+anchor_top = 0.2
+anchor_right = 0.736719
+anchor_bottom = 0.366667
+theme_override_font_sizes/normal_font_size = 24
+text = "A basic enemy. Moves towards the player and shoots. You don't get simpler than this one."
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+anchor_left = 0.225
+anchor_top = 0.366667
+anchor_right = 0.736719
+anchor_bottom = 0.533333
+offset_bottom = -3.05176e-05
+theme_override_font_sizes/normal_font_size = 24
+text = "Spins around in place and shoots fast bullets in all directions. Does this even know you're there?"
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
+anchor_left = 0.225
+anchor_top = 0.533333
+anchor_right = 0.736719
+anchor_bottom = 0.7
+offset_top = -3.05176e-05
+theme_override_font_sizes/normal_font_size = 24
+text = "Rapidly moves towards the player and rams into them. No bullets, just pure anger. Don't get caught by one of these."
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+layout_mode = 0
+anchor_left = 0.225
+anchor_top = 0.716667
+anchor_right = 0.736719
+anchor_bottom = 0.883333
+theme_override_font_sizes/normal_font_size = 24
+text = "A powerful but slow enemy with big bullets and sluggish shots. Don't let them hit you."
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="return_button" to="." method="_on_return_button_pressed"]

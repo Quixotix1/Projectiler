@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://ig5o78frvov6"]
+
+[ext_resource type="Script" path="res://scripts/suicidal_enemy.gd" id="1_1llkr"]
+[ext_resource type="Texture2D" uid="uid://cnoju0he1udp5" path="res://images/suicidal_enemy.png" id="3_bwov1"]
+[ext_resource type="PackedScene" uid="uid://wxjdrmhr70md" path="res://scenes/health_component.tscn" id="3_vb55r"]
+[ext_resource type="PackedScene" uid="uid://b4ww76hvy848f" path="res://scenes/immunity_component.tscn" id="5_1o6jj"]
+[ext_resource type="PackedScene" uid="uid://bemon7l33lvxj" path="res://scenes/collision_component.tscn" id="6_qbcw8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8tuq"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cxpfh"]
+radius = 7.0
+
+[node name="enemy" type="CharacterBody2D" groups=["enemy"]]
+texture_filter = 1
+collision_mask = 18
+script = ExtResource("1_1llkr")
+
+[node name="health_component" parent="." node_paths=PackedStringArray("immunity_component") instance=ExtResource("3_vb55r")]
+immunity_component = NodePath("../immunity_component")
+
+[node name="sprite" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("3_bwov1")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_a8tuq")
+
+[node name="immunity_component" parent="." instance=ExtResource("5_1o6jj")]
+
+[node name="collision_component" parent="." node_paths=PackedStringArray("health_component") groups=["enemy"] instance=ExtResource("6_qbcw8")]
+collision_layer = 4
+collision_mask = 2
+health_component = NodePath("../health_component")
+
+[node name="comp_collider" type="CollisionShape2D" parent="collision_component"]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_cxpfh")
+
+[node name="health_base" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = 12.0
+offset_right = 10.0
+offset_bottom = 14.0
+color = Color(1, 0, 0, 1)
+
+[node name="health_bar" type="ColorRect" parent="health_base"]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 2.0
+color = Color(0, 1, 0, 1)

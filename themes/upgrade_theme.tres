@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://d4mpauoo806wl"]
+
+[ext_resource type="FontFile" uid="uid://nxda2ebpj1e2" path="res://fonts/HomeVideo.ttf" id="1_84pt3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_allgp"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[resource]
+default_font = ExtResource("1_84pt3")
+ItemList/styles/focus = SubResource("StyleBoxFlat_allgp")
+RichTextLabel/font_sizes/normal_font_size = 24

@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr5r6fwd4j7mb"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_2fjo6"]
+[ext_resource type="Theme" uid="uid://bag22v7udcr4d" path="res://themes/base_theme.tres" id="1_3b6bc"]
+
+[node name="main_menu" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2fjo6")
+
+[node name="title" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.201562
+anchor_top = 0.233333
+anchor_right = 0.842188
+anchor_bottom = 0.398611
+grow_horizontal = 2
+theme = ExtResource("1_3b6bc")
+theme_override_font_sizes/normal_font_size = 115
+text = "Projectiler"
+metadata/_edit_use_anchors_ = true
+
+[node name="start_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.403125
+anchor_top = 0.656944
+anchor_right = 0.596875
+anchor_bottom = 0.765278
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_3b6bc")
+theme_override_font_sizes/font_size = 56
+text = "Start"
+metadata/_edit_use_anchors_ = true
+
+[node name="high_score_label" type="RichTextLabel" parent="."]
+layout_mode = 0
+anchor_left = 0.201562
+anchor_top = 0.398611
+anchor_right = 0.659375
+anchor_bottom = 0.5
+theme = ExtResource("1_3b6bc")
+theme_override_font_sizes/normal_font_size = 36
+text = "High Score: 0 Rounds"
+metadata/_edit_use_anchors_ = true
+
+[node name="enemy_guide_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.784375
+anchor_top = 0.802778
+anchor_right = 0.934375
+anchor_bottom = 0.870833
+theme = ExtResource("1_3b6bc")
+theme_override_font_sizes/font_size = 24
+text = "Enemy Guide"
+metadata/_edit_use_anchors_ = true
+
+[node name="toggle_music_button" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.021875
+anchor_top = 0.0236111
+anchor_right = 0.201562
+anchor_bottom = 0.0972222
+theme = ExtResource("1_3b6bc")
+text = "Toggle Music"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="enemy_guide_button" to="." method="_on_enemy_guide_button_pressed"]
+[connection signal="pressed" from="toggle_music_button" to="." method="_on_toggle_music_button_pressed"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://dr2ewyrbj4u5e"]
+
+[ext_resource type="PackedScene" uid="uid://jfo7d3drbg4k" path="res://scenes/player.tscn" id="1_edrpn"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_g5hhr"]
+[ext_resource type="PackedScene" uid="uid://dyjjm3dncov77" path="res://scenes/boundary.tscn" id="2_qnf8u"]
+[ext_resource type="PackedScene" uid="uid://4kg24jkpnmhk" path="res://scenes/enemies/enemy.tscn" id="3_e8pxc"]
+[ext_resource type="PackedScene" uid="uid://ig5o78frvov6" path="res://scenes/enemies/suicidal_enemy.tscn" id="4_3ugwq"]
+[ext_resource type="PackedScene" uid="uid://5p4p8uxsd3pt" path="res://scenes/enemies/destroyer_enemy.tscn" id="5_4qn30"]
+[ext_resource type="PackedScene" uid="uid://cwphur64s6w1u" path="res://scenes/enemies/spinning_enemy.tscn" id="5_awvsx"]
+[ext_resource type="Texture2D" uid="uid://5v7svkrxsdql" path="res://background.png" id="8_r6bsj"]
+
+[node name="game" type="Node2D"]
+z_index = -10
+script = ExtResource("1_g5hhr")
+basic_enemy = ExtResource("3_e8pxc")
+spinning_enemy = ExtResource("5_awvsx")
+suicidal_enemy = ExtResource("4_3ugwq")
+destroyer_enemy = ExtResource("5_4qn30")
+
+[node name="player" parent="." instance=ExtResource("1_edrpn")]
+z_index = 5
+collision_layer = 0
+collision_mask = 16
+
+[node name="boundary" parent="." groups=["boundary"] instance=ExtResource("2_qnf8u")]
+position = Vector2(1016, -20)
+scale = Vector2(1, 10)
+
+[node name="boundary2" parent="." groups=["boundary"] instance=ExtResource("2_qnf8u")]
+position = Vector2(-998, -20)
+scale = Vector2(1, 10)
+
+[node name="boundary3" parent="." groups=["boundary"] instance=ExtResource("2_qnf8u")]
+position = Vector2(0, -600)
+rotation = 1.5708
+scale = Vector2(1, 18)
+
+[node name="boundary4" parent="." groups=["boundary"] instance=ExtResource("2_qnf8u")]
+position = Vector2(0, 550)
+rotation = 1.5708
+scale = Vector2(1, 18)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -10
+texture_filter = 1
+position = Vector2(-8, -49)
+scale = Vector2(7.78889, 7.78889)
+texture = ExtResource("8_r6bsj")

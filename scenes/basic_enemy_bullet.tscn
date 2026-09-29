@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://db1m1paqm0ud8"]
+
+[ext_resource type="Texture2D" uid="uid://dukn1vuv0i5m2" path="res://images/basic_enemy_bullet.png" id="1_jnsyo"]
+[ext_resource type="Script" path="res://scripts/basic_enemy_bullet.gd" id="1_nduyi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybmfj"]
+size = Vector2(2, 4)
+
+[node name="basic_enemy_bullet" type="Node2D" groups=["bullet"]]
+texture_filter = 1
+script = ExtResource("1_nduyi")
+
+[node name="sprite" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_jnsyo")
+
+[node name="collision_component" type="Area2D" parent="." groups=["enemy_projectile"]]
+rotation = 1.5708
+collision_layer = 4
+
+[node name="collider" type="CollisionShape2D" parent="collision_component"]
+shape = SubResource("RectangleShape2D_ybmfj")
+
+[node name="destruction_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="destruction_timer" to="." method="_on_destruction_timer_timeout"]

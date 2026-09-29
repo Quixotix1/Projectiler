@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bag22v7udcr4d"]
+
+[ext_resource type="FontFile" uid="uid://nxda2ebpj1e2" path="res://fonts/HomeVideo.ttf" id="1_lxm0w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1k6m0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7th1e"]
+bg_color = Color(0.140952, 0.174195, 0.231316, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.541878, 0.544435, 0.819314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qubbq"]
+bg_color = Color(0.159584, 0.195842, 0.25814, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.775218, 0.783031, 0.9288, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icfcd"]
+bg_color = Color(0.0781082, 0.100909, 0.140096, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.269618, 0.260425, 0.501953, 1)
+
+[resource]
+default_font = ExtResource("1_lxm0w")
+Button/font_sizes/font_size = 28
+Button/styles/focus = SubResource("StyleBoxEmpty_1k6m0")
+Button/styles/hover = SubResource("StyleBoxFlat_7th1e")
+Button/styles/normal = SubResource("StyleBoxFlat_qubbq")
+Button/styles/pressed = SubResource("StyleBoxFlat_icfcd")
+RichTextLabel/font_sizes/normal_font_size = 92
+RichTextLabel/fonts/normal_font = ExtResource("1_lxm0w")
+TextEdit/fonts/font = ExtResource("1_lxm0w")
+TextEdit/styles/focus = null
+TextEdit/styles/normal = null
+TextEdit/styles/read_only = null

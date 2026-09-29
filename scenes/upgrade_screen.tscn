@@ -1,0 +1,512 @@
+[gd_scene load_steps=11 format=3 uid="uid://b54bqgjuysr2o"]
+
+[ext_resource type="Script" path="res://scripts/upgrade_screen.gd" id="1_khrap"]
+[ext_resource type="Theme" uid="uid://d4mpauoo806wl" path="res://themes/upgrade_theme.tres" id="1_rwtqa"]
+[ext_resource type="Theme" uid="uid://bag22v7udcr4d" path="res://themes/base_theme.tres" id="2_ptkrf"]
+[ext_resource type="Texture2D" uid="uid://7tyo5liot207" path="res://images/player.png" id="3_wrr8y"]
+[ext_resource type="Texture2D" uid="uid://co74lr3cb57wr" path="res://images/bullet.png" id="4_l5jwb"]
+[ext_resource type="Texture2D" uid="uid://btcl8vkw2kyv3" path="res://images/gun.png" id="5_po4aq"]
+[ext_resource type="Texture2D" uid="uid://dwpol1av8bqhc" path="res://images/coin.png" id="7_h0cw2"]
+[ext_resource type="Texture2D" uid="uid://kr4vhynode7x" path="res://images/rocket.png" id="8_p7mrd"]
+[ext_resource type="Texture2D" uid="uid://e1ycv7g8sds5" path="res://images/spike.png" id="9_sisyq"]
+[ext_resource type="Texture2D" uid="uid://b8f5k2xa2qqxg" path="res://images/weight.png" id="10_wpgl5"]
+
+[node name="upgrade_screen" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_khrap")
+
+[node name="player_upgrades" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_left = 0.125
+anchor_top = 0.138889
+anchor_right = 0.328125
+anchor_bottom = 0.638889
+color = Color(0.140447, 0.140447, 0.140447, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="title" type="RichTextLabel" parent="player_upgrades"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 20.0
+offset_right = 108.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme = ExtResource("1_rwtqa")
+text = "Player Upgrades"
+metadata/_edit_use_anchors_ = true
+
+[node name="size_upgrade_label" type="RichTextLabel" parent="player_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 74.0
+offset_right = 140.0
+offset_bottom = 114.0
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "BIGGER"
+metadata/_edit_use_anchors_ = true
+
+[node name="hp_upgrade_label" type="RichTextLabel" parent="player_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 160.0
+offset_right = 173.0
+offset_bottom = 200.0
+text = "More HP"
+metadata/_edit_use_anchors_ = true
+
+[node name="movement_upgrade_label" type="RichTextLabel" parent="player_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 240.0
+offset_right = 166.0
+offset_bottom = 292.0
+text = "Faster
+Movement"
+metadata/_edit_use_anchors_ = true
+
+[node name="size_upgrade" type="Button" parent="player_upgrades"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -100.0
+offset_right = -23.0
+offset_bottom = -76.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_ptkrf")
+metadata/_edit_use_anchors_ = true
+
+[node name="hp_upgrade" type="Button" parent="player_upgrades"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -20.0
+offset_right = -23.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_ptkrf")
+metadata/_edit_use_anchors_ = true
+
+[node name="movement_upgrade" type="Button" parent="player_upgrades"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = 60.0
+offset_right = -23.0
+offset_bottom = 84.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_ptkrf")
+metadata/_edit_use_anchors_ = true
+
+[node name="size_level_indicator" type="RichTextLabel" parent="player_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 114.0
+offset_right = 158.0
+offset_bottom = 133.0
+theme_override_font_sizes/normal_font_size = 12
+text = "Level 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="hp_level_indicator" type="RichTextLabel" parent="player_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 192.0
+offset_right = 158.0
+offset_bottom = 211.0
+theme_override_font_sizes/normal_font_size = 12
+text = "Level 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="movement_level_indicator" type="RichTextLabel" parent="player_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 292.0
+offset_right = 158.0
+offset_bottom = 311.0
+theme_override_font_sizes/normal_font_size = 12
+text = "Level 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="bullet_upgrades" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.374219
+anchor_top = 0.361111
+anchor_right = 0.625781
+anchor_bottom = 0.861111
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.140447, 0.140447, 0.140447, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="title" type="RichTextLabel" parent="bullet_upgrades"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 20.0
+offset_right = 108.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme = ExtResource("1_rwtqa")
+text = "Bullet Upgrades"
+metadata/_edit_use_anchors_ = true
+
+[node name="bullet_inventory" type="ItemList" parent="bullet_upgrades"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 72.0
+offset_right = 293.0
+offset_bottom = 303.0
+theme = ExtResource("1_rwtqa")
+theme_override_font_sizes/font_size = 10
+allow_reselect = true
+allow_search = false
+metadata/_edit_use_anchors_ = true
+
+[node name="equip_button" type="Button" parent="bullet_upgrades"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 317.0
+offset_right = 215.0
+offset_bottom = 348.0
+theme = ExtResource("2_ptkrf")
+theme_override_font_sizes/font_size = 18
+text = "Equip"
+metadata/_edit_use_anchors_ = true
+
+[node name="gun_upgrades" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_left = 0.671875
+anchor_top = 0.138889
+anchor_right = 0.875
+anchor_bottom = 0.638889
+color = Color(0.140447, 0.140447, 0.140447, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="title" type="RichTextLabel" parent="gun_upgrades"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_top = 20.0
+offset_right = 108.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme = ExtResource("1_rwtqa")
+text = "Gun Upgrades"
+metadata/_edit_use_anchors_ = true
+
+[node name="reload_upgrade_label" type="RichTextLabel" parent="gun_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 80.0
+offset_right = 150.0
+offset_bottom = 133.0
+text = "Faster Reload Speed"
+metadata/_edit_use_anchors_ = true
+
+[node name="bspeed_upgrade_label" type="RichTextLabel" parent="gun_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 152.0
+offset_right = 150.0
+offset_bottom = 192.0
+text = "Faster Bullets"
+metadata/_edit_use_anchors_ = true
+
+[node name="damage_upgrade_label" type="RichTextLabel" parent="gun_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 216.0
+offset_right = 150.0
+offset_bottom = 252.0
+text = "Higher Damage"
+metadata/_edit_use_anchors_ = true
+
+[node name="nbullets_upgrade_label" type="RichTextLabel" parent="gun_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 280.0
+offset_right = 150.0
+offset_bottom = 316.0
+text = "More Bullets"
+metadata/_edit_use_anchors_ = true
+
+[node name="reload_upgrade" type="Button" parent="gun_upgrades"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -92.0
+offset_right = -23.0
+offset_bottom = -68.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_ptkrf")
+metadata/_edit_use_anchors_ = true
+
+[node name="bspeed_upgrade" type="Button" parent="gun_upgrades"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -28.0
+offset_right = -23.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_ptkrf")
+metadata/_edit_use_anchors_ = true
+
+[node name="damage_upgrade" type="Button" parent="gun_upgrades"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = 36.0
+offset_right = -23.0
+offset_bottom = 60.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_ptkrf")
+metadata/_edit_use_anchors_ = true
+
+[node name="nbullets_upgrade" type="Button" parent="gun_upgrades"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = 100.0
+offset_right = -23.0
+offset_bottom = 124.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_ptkrf")
+metadata/_edit_use_anchors_ = true
+
+[node name="reload_level_indicator" type="RichTextLabel" parent="gun_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 133.0
+offset_right = 158.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 12
+text = "Level 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="bspeed_level_indicator" type="RichTextLabel" parent="gun_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 180.0
+offset_right = 158.0
+offset_bottom = 199.0
+theme_override_font_sizes/normal_font_size = 12
+text = "Level 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="nbullets_level_indicator" type="RichTextLabel" parent="gun_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 311.0
+offset_right = 158.0
+offset_bottom = 330.0
+theme_override_font_sizes/normal_font_size = 12
+text = "Level 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="damage_level_indicator" type="RichTextLabel" parent="gun_upgrades"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 243.0
+offset_right = 158.0
+offset_bottom = 262.0
+theme_override_font_sizes/normal_font_size = 12
+text = "Level 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="inventory" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.413281
+anchor_top = 0.0888889
+anchor_right = 0.588281
+anchor_bottom = 0.272222
+grow_horizontal = 2
+color = Color(0.31802, 0.31802, 0.31802, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="coin_count" type="RichTextLabel" parent="inventory"]
+layout_mode = 0
+offset_left = 46.0
+offset_right = 224.0
+offset_bottom = 30.0
+theme = ExtResource("2_ptkrf")
+theme_override_font_sizes/normal_font_size = 32
+text = "*1"
+metadata/_edit_use_anchors_ = true
+
+[node name="rocket_count" type="RichTextLabel" parent="inventory"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 64.0
+offset_right = 224.0
+offset_bottom = 94.0
+theme = ExtResource("2_ptkrf")
+theme_override_font_sizes/normal_font_size = 32
+text = "*1"
+metadata/_edit_use_anchors_ = true
+
+[node name="spike_count" type="RichTextLabel" parent="inventory"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 30.0
+offset_right = 224.0
+offset_bottom = 60.0
+theme = ExtResource("2_ptkrf")
+theme_override_font_sizes/normal_font_size = 32
+text = "*1"
+metadata/_edit_use_anchors_ = true
+
+[node name="weight_count" type="RichTextLabel" parent="inventory"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 96.0
+offset_right = 224.0
+offset_bottom = 126.0
+theme = ExtResource("2_ptkrf")
+theme_override_font_sizes/normal_font_size = 32
+text = "*1"
+metadata/_edit_use_anchors_ = true
+
+[node name="images" type="Control" parent="."]
+anchors_preset = 0
+anchor_right = 0.03125
+anchor_bottom = 0.0555556
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" type="Sprite2D" parent="images"]
+position = Vector2(290, 531)
+scale = Vector2(4, 4)
+texture = ExtResource("3_wrr8y")
+
+[node name="Bullet" type="Sprite2D" parent="images"]
+position = Vector2(642, 659)
+scale = Vector2(4, 4)
+texture = ExtResource("4_l5jwb")
+
+[node name="Gun" type="Sprite2D" parent="images"]
+position = Vector2(994, 527)
+scale = Vector2(4, 4)
+texture = ExtResource("5_po4aq")
+
+[node name="Coin" type="Sprite2D" parent="images"]
+position = Vector2(408, 191)
+texture = ExtResource("7_h0cw2")
+
+[node name="Coin2" type="Sprite2D" parent="images"]
+position = Vector2(408, 271)
+texture = ExtResource("7_h0cw2")
+
+[node name="Coin3" type="Sprite2D" parent="images"]
+position = Vector2(552, 80)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_h0cw2")
+
+[node name="Rocket" type="Sprite2D" parent="images"]
+position = Vector2(407, 351)
+texture = ExtResource("8_p7mrd")
+
+[node name="Rocket2" type="Sprite2D" parent="images"]
+position = Vector2(552, 143)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_p7mrd")
+
+[node name="Rocket3" type="Sprite2D" parent="images"]
+position = Vector2(1109, 263)
+texture = ExtResource("8_p7mrd")
+
+[node name="Rocket4" type="Sprite2D" parent="images"]
+position = Vector2(1108, 199)
+texture = ExtResource("8_p7mrd")
+
+[node name="Spike" type="Sprite2D" parent="images"]
+position = Vector2(552, 109)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("9_sisyq")
+
+[node name="Spike2" type="Sprite2D" parent="images"]
+position = Vector2(1109, 328)
+texture = ExtResource("9_sisyq")
+
+[node name="Spike3" type="Sprite2D" parent="images"]
+position = Vector2(1109, 391)
+texture = ExtResource("9_sisyq")
+
+[node name="Weight" type="Sprite2D" parent="images"]
+position = Vector2(552, 174)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_wpgl5")
+
+[node name="round_increment" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.739062
+anchor_top = 0.861111
+anchor_right = 0.875
+anchor_bottom = 0.911111
+offset_left = 64.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_ptkrf")
+text = "Next round"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="player_upgrades/size_upgrade" to="." method="_on_size_upgrade_pressed"]
+[connection signal="pressed" from="player_upgrades/hp_upgrade" to="." method="_on_hp_upgrade_pressed"]
+[connection signal="pressed" from="player_upgrades/movement_upgrade" to="." method="_on_movement_upgrade_pressed"]
+[connection signal="pressed" from="bullet_upgrades/equip_button" to="." method="_on_equip_button_pressed"]
+[connection signal="pressed" from="gun_upgrades/reload_upgrade" to="." method="_on_reload_upgrade_pressed"]
+[connection signal="pressed" from="gun_upgrades/bspeed_upgrade" to="." method="_on_bspeed_upgrade_pressed"]
+[connection signal="pressed" from="gun_upgrades/damage_upgrade" to="." method="_on_damage_upgrade_pressed"]
+[connection signal="pressed" from="gun_upgrades/nbullets_upgrade" to="." method="_on_nbullets_upgrade_pressed"]
+[connection signal="pressed" from="round_increment" to="." method="_on_round_increment_pressed"]

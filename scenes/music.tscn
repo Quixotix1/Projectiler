@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://h8x5bwelicrf"]
+
+[ext_resource type="AudioStream" uid="uid://by3nkpxn4r2y4" path="res://audio/spacial_harvest.mp3" id="1_3y36r"]
+
+[node name="music" type="AudioStreamPlayer"]
+stream = ExtResource("1_3y36r")
+autoplay = true

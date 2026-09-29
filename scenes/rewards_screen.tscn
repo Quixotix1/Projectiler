@@ -1,0 +1,133 @@
+[gd_scene load_steps=7 format=3 uid="uid://cglyd5ltadkcn"]
+
+[ext_resource type="Script" path="res://scripts/rewards_screen.gd" id="1_4rrkn"]
+[ext_resource type="Theme" uid="uid://bag22v7udcr4d" path="res://themes/base_theme.tres" id="1_pn6es"]
+[ext_resource type="Texture2D" uid="uid://dwpol1av8bqhc" path="res://images/coin.png" id="2_abkgm"]
+[ext_resource type="Texture2D" uid="uid://e1ycv7g8sds5" path="res://images/spike.png" id="4_eyrnr"]
+[ext_resource type="Texture2D" uid="uid://kr4vhynode7x" path="res://images/rocket.png" id="5_gdnvi"]
+[ext_resource type="Texture2D" uid="uid://b8f5k2xa2qqxg" path="res://images/weight.png" id="6_nxkjy"]
+
+[node name="rewards_screen" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4rrkn")
+
+[node name="title" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.348437
+anchor_top = 0.0277778
+anchor_right = 0.651563
+anchor_bottom = 0.145833
+grow_horizontal = 2
+theme = ExtResource("1_pn6es")
+text = "REWARDS"
+metadata/_edit_use_anchors_ = true
+
+[node name="coin_count" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.235156
+anchor_top = 0.156944
+anchor_right = 0.5
+anchor_bottom = 0.390278
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pn6es")
+text = "* 0
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="spikes_count" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.235156
+anchor_top = 0.273611
+anchor_right = 0.5
+anchor_bottom = 0.506944
+offset_top = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pn6es")
+text = "* 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="rockets_count" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.235156
+anchor_top = 0.390278
+anchor_right = 0.5
+anchor_bottom = 0.611111
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pn6es")
+text = "* 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="weights_count" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.235156
+anchor_top = 0.506944
+anchor_right = 0.5
+anchor_bottom = 0.741667
+offset_top = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pn6es")
+text = "* 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="extra_drops" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.170833
+anchor_right = 0.95625
+anchor_bottom = 0.626389
+theme = ExtResource("1_pn6es")
+theme_override_font_sizes/normal_font_size = 53
+metadata/_edit_use_anchors_ = true
+
+[node name="Coin" type="Sprite2D" parent="."]
+position = Vector2(218, 155)
+scale = Vector2(4, 4)
+texture = ExtResource("2_abkgm")
+
+[node name="Spike" type="Sprite2D" parent="."]
+position = Vector2(218, 239)
+scale = Vector2(4, 4)
+texture = ExtResource("4_eyrnr")
+
+[node name="Rocket" type="Sprite2D" parent="."]
+position = Vector2(218, 325)
+scale = Vector2(4, 4)
+texture = ExtResource("5_gdnvi")
+
+[node name="Weight" type="Sprite2D" parent="."]
+position = Vector2(218, 408)
+scale = Vector2(4, 4)
+texture = ExtResource("6_nxkjy")
+
+[node name="continue_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.421875
+anchor_top = 0.861111
+anchor_right = 0.578125
+anchor_bottom = 0.930556
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_pn6es")
+text = "Continue"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="continue_button" to="." method="_on_continue_button_pressed"]
